@@ -21,11 +21,14 @@ library(ggcorrplot)
 #install.packages('dplyr')
 library(dplyr)
 
+budget <- read_excel("C:/Users/1/Desktop/аст/интернет данные.xlsx")
+
 budget$budget <- as.numeric(budget$budget)
 
 
 forcor <- budget %>% select_if(is.numeric)
 corel <- cor(forcor)
+corel
 corrplot(corel, method='pie', type = 'lower')
 
 options("scipen"=100, "digits"=4)
